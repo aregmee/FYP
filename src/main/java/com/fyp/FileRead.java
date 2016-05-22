@@ -8,15 +8,8 @@ import java.util.ArrayList;
  * Created by deepak on 5/20/16.
  */
 public class FileRead {
-    public static void main(String[] args) {
-//        String path1 = "/Users/deepak/Desktop/Theta1.txt";
-//        String path2 = "/Users/deepak/Desktop/Theta2.txt";
-//        convertToMatrix(path1, "theta1");
 
-
-    }
-
-    public static Double[][] convertToMatrix(String path, String t) {
+    public Double[][] convertToMatrix(String path, String t) {
         BufferedReader br = null;
 
         try {
@@ -39,7 +32,7 @@ public class FileRead {
                 }
             }
             Double[][] finalTheta1 = new Double[0][0];
-            if (t == "theta1") {
+            if (t.equalsIgnoreCase("theta1")) {
                finalTheta1 = new Double[784][500];
                 int index2 = 0;
                 for (int i = 0; i < 784; i++) {
@@ -52,7 +45,7 @@ public class FileRead {
                 }
 
 
-            } else if (t == "theta2") {
+            } else if (t.equalsIgnoreCase("theta2")) {
                finalTheta1 = new Double[500][196];
                 int index2 = 0;
                 for (int i = 0; i < 500; i++) {
@@ -63,8 +56,7 @@ public class FileRead {
 //                    System.out.println(finalTheta1[i][j]);
                     }
                 }
-            }
-            else if(t =="theta3"){
+            } else if (t.equalsIgnoreCase("theta3")) {
                 finalTheta1 = new Double[196][500];
                 int index2 = 0;
                 for (int i = 0; i < 196; i++) {
@@ -75,9 +67,7 @@ public class FileRead {
 //                    System.out.println(finalTheta1[i][j]);
                     }
                 }
-            }
-
-            else if(t == "theta4") {
+            } else if (t.equalsIgnoreCase("theta4")) {
                 finalTheta1 = new Double[500][784];
                 int index2 = 0;
                 for (int i = 0; i < 500; i++) {
@@ -89,6 +79,7 @@ public class FileRead {
                     }
                 }
             }
+            System.out.println("matrix converted to size : " + finalTheta1.length + "*" + finalTheta1[0].length);
             return finalTheta1;
 
 
@@ -105,7 +96,7 @@ public class FileRead {
 
     }
 
-    public static Double[][] multiplyByMatrix(Double[][] m1, Double[][] m2) {
+    public Double[][] multiplyByMatrix(Double[][] m1, Double[][] m2) {
         int m1ColLength = m1[0].length; // m1 columns length
         int m2RowLength = m2.length;    // m2 rows length
 //        Double[][] test = new Double[0][0];
@@ -126,11 +117,13 @@ public class FileRead {
 //                    System.out.println(mResult[i][j]);
                 }
             }
+            System.out.println("multiplied matrices of size : "
+                    + mRRowLength + " * " + m1ColLength + " and "
+                    + m2RowLength + " * " + mRColLength + " to get matrix of size : "
+                    + mRRowLength + " * " + mRColLength);
 //            System.out.println("-------");
             return mResult;
         }
 
     }
-
-
 }
